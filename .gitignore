@@ -475,3 +475,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+.DS_store
+appsettings.json
+appsettings.Development.json

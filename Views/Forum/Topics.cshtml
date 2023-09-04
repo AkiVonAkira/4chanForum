@@ -1,0 +1,8 @@
+﻿@model List<TopicModel>
+
+<ul>
+    @foreach (var topic in Model)
+    {
+        <li><a href="@Url.Action("Threads", "Forum", new {topicId = topic.Id})">@topic.Title</a></li>
+    }
+</ul>
