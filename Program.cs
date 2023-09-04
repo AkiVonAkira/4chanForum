@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using _4chanForum.Models;
+
 namespace _4chanForum
 {
     public class Program
@@ -8,6 +11,9 @@ namespace _4chanForum
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<DataContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DataContext")));
 
             var app = builder.Build();
 
