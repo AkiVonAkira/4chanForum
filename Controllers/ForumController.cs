@@ -6,8 +6,8 @@ namespace _4chanForum.Controllers
     public class ForumController : Controller
     {
         private readonly DataContext _context;
-        public ForumController(DataContext context) 
-        { 
+        public ForumController(DataContext context)
+        {
             _context = context;
         }
 

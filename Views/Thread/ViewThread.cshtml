@@ -1,0 +1,13 @@
+﻿@model List<ThreadModel>
+
+<h1>Thread Details</h1>
+
+@foreach (var thread in Model)
+{
+    <div>
+        <h2>@thread.Title</h2>
+        <p>@thread.Text</p>
+    </div>
+}
+
+<a href="@Url.Action("Index", "Thread", new { topicId = ViewBag.TopicId })">Back to Threads</a>
