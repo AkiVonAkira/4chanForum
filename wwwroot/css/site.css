@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.form-group {
+    padding-bottom: 1rem;
+}

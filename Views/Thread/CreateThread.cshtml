@@ -1,0 +1,15 @@
+﻿@model ThreadModel
+
+<h1>Create a new thread</h1>
+<form asp-action="CreateThread">
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input type="text" class="form-control" asp-for="Title">
+    </div>
+    <div class="form-group">
+        <label for="Text">Message</label>
+        <textarea class="form-control" asp-for="Text"></textarea>
+    </div>
+    <input type="hidden" asp-for="TopicId" value="@ViewBag.TopicId" />
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
