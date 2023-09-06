@@ -1,0 +1,15 @@
+﻿@model ReplyModel
+
+<h2>Write Reply</h2>
+<p>You are replying to the thread with ID: @Model.ThreadId</p>
+
+<form asp-action="Reply" method="post">
+
+    <div class="form-group">
+        <label asp-for="Text"></label>
+        <input asp-for="Text" class="form-control" />
+        <span asp-validation-for="Text" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="ThreadId" />
+    <button type="submit" class="btn btn-primary">Submit Reply</button>
+</form>
