@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using _4chanForum.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace _4chanForum
 {
