@@ -13,9 +13,10 @@ namespace _4chanForum.Controllers
 
         public IActionResult Index(int topicId)
         {
-            var threads = _context.Threads.Where(t => t.TopicId == topicId).ToList();
+            var thread = _context.Threads.Where(t => t.TopicId == topicId).ToList();
             ViewData["TopicId"] = topicId;
-            return View(threads);
+            if (thread.Any()) { return View(thread); }
+            else { return View(new List<ThreadModel>()); }
         }
     }
 }

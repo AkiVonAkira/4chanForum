@@ -1,34 +1,33 @@
 ﻿@model List<ThreadModel>
 
 <div class="forumTopic-Header">
-    <h1>Threads</h1>
-    <a href="@Url.Action("CreateThread", "Thread", new {topicId = ViewBag.TopicId})">Create New Thread</a>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*<h1>@ViewBag.TopicId</h1> show topic title by using the topic id from viewbag*@
+    <a class="btn" href="@Url.Action("CreateThread", "Thread", new {topicId = ViewBag.TopicId})">
+        <i class="fa fa-download"></i>+</a>
 </div>
 
-<div class="forumTopic-container-pinned">
-    @foreach (var thread in Model)
+@{
+    @if (Model != null && Model.Any())
     {
-        @if (thread.isPinned)
-        {
-            <a class="forumTopic-pinned" href="@Url.Action("Index", "Thread", new {threadId = thread.Id})">
-                <dic class="forumTopic-Section">
+        <div class="forumTopic-Container">
+            @foreach (var thread in Model)
+            {
+                <a class="forumTopic" href="@Url.Action("Index", "Thread", new {threadId = thread.Id})">
+                    <div class="forumTopic-Section">
+                        <p>@thread.Title</p>
+                        @if (thread.isPinned)
+                        {
+                            <img class="pinIcon" src="@Url.Content("~/images/icons/thumbtacks.png")" />
+                        }
+                    </div>
                     <p>@thread.Title</p>
-                    <img class="pinIcon" src="@Url.Content("~/images/icons/thumbtacks.png")" />
-                </dic>
-                <p>@thread.Text</p>
-            </a>
-        }
+                </a>
+            }
+        </div>
     }
-</div>
-<div class="forumTopic-container">
-    @foreach (var thread in Model)
+    else
     {
-        @if (!thread.isPinned)
-        {
-            <a class="forumTopic" href="@Url.Action("Index", "Thread", new {threadId = thread.Id})">
-                <p>@thread.Title</p>
-                <p>@thread.Text</p>
-            </a>
-        }
+        <p>No threads are available for this topic.</p>
     }
-</div>
+}

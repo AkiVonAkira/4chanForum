@@ -1,5 +1,6 @@
 ﻿using _4chanForum.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading;
 
 namespace _4chanForum.Controllers
 {
@@ -16,7 +17,8 @@ namespace _4chanForum.Controllers
         {
             var thread = _context.Threads.Where(t => t.Id == threadId).ToList();
             ViewData["ThreadId"] = threadId;
-            return View(thread);
+            if (thread.Any()) { return View(thread); }
+            else { return View(new List<ThreadModel>()); }
         }
 
         public IActionResult CreateThread(int topicId)

@@ -18,7 +18,8 @@ namespace _4chanForum.Controllers
         public IActionResult Index()
         {
             var topics = _context.Topics.ToList();
-            return View(topics);
+            if (topics.Any()) { return View(topics); }
+            else { return View(); }            
         }
 
         public IActionResult Privacy()
