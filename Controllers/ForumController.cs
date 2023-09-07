@@ -11,15 +11,11 @@ namespace _4chanForum.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int topicId)
         {
-            return View();
-        }
-
-        public IActionResult Topics()
-        {
-            var topics = _context.Topics.ToList();
-            return View(topics);
+            var threads = _context.Threads.Where(t => t.TopicId == topicId).ToList();
+            ViewData["TopicId"] = topicId;
+            return View(threads);
         }
     }
 }

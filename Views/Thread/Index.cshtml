@@ -1,14 +1,14 @@
 ﻿@model List<ThreadModel>
 
-    <h1>Threads</h1>
+<h1>Thread Details</h1>
 
-<ul>
-    @foreach (var thread in Model)
-    {
-        <li>
-            <a href="@Url.Action("ViewThread", "Thread", new {threadId = thread.Id })">@thread.Title</a>
-        </li>
-    }
-</ul>
+@foreach (var thread in Model)
+{
+    <div class="thread-container">
+        <h2>@thread.Title</h2>
+        <p style="white-space:pre-wrap">@thread.Text</p>
+    </div>
+}
 
-<a href="@Url.Action("CreateThread", "Thread", new {topicId = ViewBag.TopicId})">Create New Thread</a>
+@*does not work*@
+<a href="@Url.Action("Index", "Thread", new { topicId = ViewBag.TopicId })">Back to Threads</a>

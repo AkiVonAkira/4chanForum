@@ -22,4 +22,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\icons\thumbtacks.png" />
+  </ItemGroup>
+
 </Project>

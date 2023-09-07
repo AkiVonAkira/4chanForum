@@ -1,14 +1,10 @@
 ﻿using _4chanForum.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Data.Entity;
 
 namespace _4chanForum.Controllers
 {
-    
     public class ThreadController : Controller
     {
-
         private readonly DataContext _context;
 
         public ThreadController(DataContext context)
@@ -16,36 +12,12 @@ namespace _4chanForum.Controllers
             _context = context;
         }
 
-        public IActionResult Index(int topicId)
-        {
-            var threads = _context.Threads.Where(t => t.TopicId == topicId).ToList();
-            ViewData["TopicId"] = topicId;
-            return View(threads);
-        }
-        
-        public IActionResult ViewThread(int threadId)
+        public IActionResult Index(int threadId)
         {
             var thread = _context.Threads.Where(t => t.Id == threadId).ToList();
-             
+            ViewData["ThreadId"] = threadId;
             return View(thread);
         }
-        
-        
-
-        //public IActionResult Details(int threadId)
-        //{
-
-        //    var threads = _context.Threads.Where(t => t.Id == threadId).ToList();
-
-        //    if (threads == null)
-        //    {
-
-        //        return NotFound();
-
-        //    }
-
-        //    return View();
-        //}
 
         public IActionResult CreateThread(int topicId)
         {
@@ -64,9 +36,13 @@ namespace _4chanForum.Controllers
                 return RedirectToAction("Index", new { topicId = thread.TopicId });
             }
             return View(thread);
-
         }
 
+        public IActionResult Reply(int threadId)
+        {
+            ViewData["threadId"] = threadId;
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -74,47 +50,11 @@ namespace _4chanForum.Controllers
         {
             if (ModelState.IsValid)
             {
-                
                 _context.Replies.Add(reply);
-
                 _context.SaveChanges();
-
-               
                 return RedirectToAction("ViewThread", new { threadId = reply.ThreadId });
             }
-
             return View(reply);
         }
-
-
-
-
-
-
-        /*
-       public ActionResult Edit(int threadId)
-       {
-           return View();
-       }
-
-
-
-        public IActionResult Edit(int threadId)
-        {
-            var threads = _context.Threads.Where(t => t.Id == threadId).ToList();
-
-            if (threads == null)
-            {
-                return NotFound();
-            }
-
-
-            return View(threads);
-        }
-
-        */
-
-
-
     }
 }

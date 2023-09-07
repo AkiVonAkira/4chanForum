@@ -1,8 +1,34 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<ThreadModel>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="forumTopic-Header">
+    <h1>Threads</h1>
+    <a href="@Url.Action("CreateThread", "Thread", new {topicId = ViewBag.TopicId})">Create New Thread</a>
+</div>
+
+<div class="forumTopic-container-pinned">
+    @foreach (var thread in Model)
+    {
+        @if (thread.isPinned)
+        {
+            <a class="forumTopic-pinned" href="@Url.Action("Index", "Thread", new {threadId = thread.Id})">
+                <dic class="forumTopic-Section">
+                    <p>@thread.Title</p>
+                    <img class="pinIcon" src="@Url.Content("~/images/icons/thumbtacks.png")" />
+                </dic>
+                <p>@thread.Text</p>
+            </a>
+        }
+    }
+</div>
+<div class="forumTopic-container">
+    @foreach (var thread in Model)
+    {
+        @if (!thread.isPinned)
+        {
+            <a class="forumTopic" href="@Url.Action("Index", "Thread", new {threadId = thread.Id})">
+                <p>@thread.Title</p>
+                <p>@thread.Text</p>
+            </a>
+        }
+    }
 </div>

@@ -21,3 +21,82 @@ body {
 .form-group {
     padding-bottom: 1rem;
 }
+
+.topic-container {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.topic {
+    padding: 1em;
+}
+
+.forumTopic-container {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.forumTopic-Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1em;
+}
+
+.forumTopic {
+    padding: 1em;
+    text-decoration: none;
+    border: 1px solid grey;
+    border-radius: 1em;
+    margin: 0.75em;
+    text-decoration: none;
+    color: black;
+}
+.forumTopic:hover {
+    background: #cfa4a4;
+}
+
+
+
+.pinIcon{
+    height: 2em;
+    aspect-ratio:1/1;
+    justify-content:flex-end;
+}
+
+
+.forumTopic-container-pinned {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.forumTopic-pinned {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    text-decoration: none;
+    border: 1px solid grey;
+    border-radius: 1em;
+    margin: 0.75em;
+    text-decoration: none;
+    color: black;
+}
+
+.forumTopic-pinned:hover {
+    background: #cfa4a4;
+}
+
+.forumTopic-Section{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+
+
+.thread-container {
+    padding: 1em;
+}

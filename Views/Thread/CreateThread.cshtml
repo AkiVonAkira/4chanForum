@@ -5,10 +5,12 @@
     <div class="form-group">
         <label for="Title">Title</label>
         <input type="text" class="form-control" asp-for="Title">
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label for="Text">Message</label>
         <textarea class="form-control" asp-for="Text"></textarea>
+        <span asp-validation-for="Text" class="text-danger"></span>
     </div>
     <input type="hidden" asp-for="TopicId" value="@ViewBag.TopicId" />
     <button type="submit" class="btn btn-primary">Send</button>

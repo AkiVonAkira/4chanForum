@@ -1,0 +1,6 @@
+﻿@model List<TopicModel>
+
+@foreach (var topic in Model)
+{
+    <li class="nav-item"><a class="nav-link text-dark" href="@Url.Action("Index", "Forum", new {topicId = topic.Id})">@topic.Title</a></li>
+}
