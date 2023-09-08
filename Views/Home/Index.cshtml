@@ -4,8 +4,7 @@
 
 <div class="text-center">
     <h1 class="display-4">4ChanForum</h1>
-    <ul class="list-unstyled accordion-body">
-        <partial name="_TopicListPartial" />
-    </ul>
-    
+    <ul class="list-unstyled padd">
+        @await Component.InvokeAsync("Topics")
+    </ul>    
 </div>
