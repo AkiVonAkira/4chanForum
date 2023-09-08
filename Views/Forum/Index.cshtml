@@ -15,10 +15,7 @@
                 <a class="forumTopic" href="@Url.Action("Index", "Thread", new {threadId = thread.Id})">
                     <div class="forumTopic-Section">
                         <h3>@thread.Title</h3>
-                        @if (thread.isPinned)
-                        {
-                            <img class="pinIcon" src="@Url.Content("~/images/icons/thumbtacks.png")" />
-                        }
+                        @if (thread.isPinned) { <i class="fa-solid fa-thumbtack"></i> }
                     </div>
                     <p class="">@thread.Text</p>
                 </a>
