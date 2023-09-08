@@ -1,5 +1,6 @@
 ﻿using _4chanForum.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading;
 
 namespace _4chanForum.Controllers
 {
@@ -13,9 +14,13 @@ namespace _4chanForum.Controllers
 
         public IActionResult Index(int topicId)
         {
-            var thread = _context.Threads.Where(t => t.TopicId == topicId).ToList();
+            var threads = _context.Threads.Where(t => t.TopicId == topicId).ToList();
+            var topic = _context.Topics.FirstOrDefault(t => t.Id == topicId);
+
             ViewData["TopicId"] = topicId;
-            if (thread.Any()) { return View(thread); }
+            ViewData["TopicTitle"] = (topic != null) ? topic.Title : "Topic not found";
+
+            if (threads.Any()) { return View(threads); }
             else { return View(new List<ThreadModel>()); }
         }
     }

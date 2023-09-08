@@ -15,9 +15,19 @@ namespace _4chanForum.Controllers
 
         public IActionResult Index(int threadId)
         {
-            var thread = _context.Threads.Where(t => t.Id == threadId).ToList();
-            ViewData["ThreadId"] = threadId;
-            if (thread.Any()) { return View(thread); }
+            var thread = _context.Threads.FirstOrDefault(t => t.Id == threadId);
+
+            if (thread != null)
+            {
+                var topicId = thread.TopicId;
+                var topic = _context.Topics.FirstOrDefault(t => t.Id == topicId);
+
+                ViewData["ThreadId"] = threadId;
+                ViewData["TopicId"] = thread.TopicId;
+                ViewData["TopicTitle"] = topic?.Title;
+
+                return View(new List<ThreadModel> { thread }); 
+            }
             else { return View(new List<ThreadModel>()); }
         }
 
@@ -35,7 +45,7 @@ namespace _4chanForum.Controllers
             {
                 _context.Threads.Add(thread);
                 _context.SaveChanges();
-                return RedirectToAction("Index", new { topicId = thread.TopicId });
+                return RedirectToAction("Index", "Forum", new { topicId = thread.TopicId });
             }
             return View(thread);
         }

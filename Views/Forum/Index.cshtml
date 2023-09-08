@@ -1,13 +1,12 @@
 ﻿@model List<ThreadModel>
 
-<div class="forumTopic-Header">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    @*<h1>@ViewBag.TopicId</h1> show topic title by using the topic id from viewbag*@
-    <a class="btn" href="@Url.Action("CreateThread", "Thread", new {topicId = ViewBag.TopicId})">
-        <i class="fa fa-download"></i>+</a>
-</div>
+<div class="forumTopic-Container">
+    <div class="forumTopic-Header">
+        <h1>@ViewData["TopicTitle"]</h1>
+        <a class="btn" href="@Url.Action("CreateThread", "Thread", new {topicId = ViewBag.TopicId})">
+            <i class="fa-regular fa-plus"></i></a>
+    </div>
 
-@{
     @if (Model != null && Model.Any())
     {
         <div class="forumTopic-Container">
@@ -15,13 +14,13 @@
             {
                 <a class="forumTopic" href="@Url.Action("Index", "Thread", new {threadId = thread.Id})">
                     <div class="forumTopic-Section">
-                        <p>@thread.Title</p>
+                        <h3>@thread.Title</h3>
                         @if (thread.isPinned)
                         {
                             <img class="pinIcon" src="@Url.Content("~/images/icons/thumbtacks.png")" />
                         }
                     </div>
-                    <p>@thread.Title</p>
+                    <p class="">@thread.Text</p>
                 </a>
             }
         </div>
@@ -30,4 +29,4 @@
     {
         <p>No threads are available for this topic.</p>
     }
-}
+</div>
