@@ -14,10 +14,79 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 60px;;
+}
+
+.nav-link {
+    border: 1px solid black;
+    border-radius: 0.5em;
+    margin: 0.75em;
+    padding: 0.5rem 1rem;
 }
 
 
 .form-group {
     padding-bottom: 1rem;
+}
+
+.topic-container {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.topic {
+    padding: 1em;
+}
+
+.forumTopic-Container {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.forumTopic-Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+    border-bottom: 2px solid black;
+    margin: 0.5rem;
+}
+
+.forumTopic {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    margin: 0.5rem;
+    text-decoration: none;
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 10px 20px -15px black;
+}
+
+.forumTopic:hover {
+    background: #434343;
+    color: white;
+}
+
+.pinIcon{
+    height: 2em;
+    aspect-ratio:1/1;
+    justify-content:flex-end;
+}
+
+.forumTopic-Section{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+.thread-container {
+    padding: 1em;
 }
