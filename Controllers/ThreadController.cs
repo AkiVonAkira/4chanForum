@@ -1,6 +1,5 @@
 ﻿using _4chanForum.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
 
 namespace _4chanForum.Controllers
 {
@@ -26,7 +25,7 @@ namespace _4chanForum.Controllers
                 ViewData["TopicId"] = thread.TopicId;
                 ViewData["TopicTitle"] = topic?.Title;
 
-                return View(new List<ThreadModel> { thread }); 
+                return View(new List<ThreadModel> { thread });
             }
             else { return View(new List<ThreadModel>()); }
         }
@@ -56,6 +55,7 @@ namespace _4chanForum.Controllers
             return View();
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Reply(ReplyModel reply)
@@ -68,5 +68,6 @@ namespace _4chanForum.Controllers
             }
             return View(reply);
         }
+        
     }
 }
