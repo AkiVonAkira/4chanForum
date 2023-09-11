@@ -1,16 +1,54 @@
 ﻿@model List<ThreadModel>
 
-<h1>Thread Details</h1>
+<div class="common-container">
+    @foreach (var thread in Model)
+    {
+        <div class="section-header">
+            <h1>
+                <a href="@Url.Action("Index", "Forum", new { topicId = ViewData["TopicId"] })">
+                    @ViewData["TopicTitle"]
+                </a>
+                <span>/ @thread.Title</span>
+            </h1>
+        </div>
 
-@foreach (var thread in Model)
-{
-    <div class="thread-container">
-        <h2>@thread.Title</h2>
-        <p style="white-space:pre-wrap">@thread.Text</p>
-    </div>
-}
+        <div class="common-section">
+            <span class="relative-time" data-date="@thread.Date"></span>
+            <p style="white-space:pre-wrap">@thread.Text</p>
+        </div>
+
+        <div id="common-container" style="display: block;">
+            @await Component.InvokeAsync("ReplyForm", new { threadId = thread.Id })
+        </div>
+        <div id="repliesSection">
+            @await Component.InvokeAsync("Replies", new { threadId = thread.Id })
+        </div>
+    }
+</div>
 
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".toggle-reply-form").click(function () {
+            var replyFormId = $(this).data("reply-form");
+            $("#" + replyFormId).toggle();
+        });
+    });
+</script>
 
-@*does not work*@
-@*<a href="@Url.Action("Index", "Thread", new { topicId = ViewBag.TopicId })">Back to Threads</a>*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+    function updateRelativeTimes() {
+        var relativeTimeElements = document.querySelectorAll('.relative-time');
+        relativeTimeElements.forEach(function (element) {
+            var dateToDisplay = element.getAttribute('data-date');
+            var relativeTime = moment(dateToDisplay).fromNow();
+            element.textContent = relativeTime;
+        });
+    }
+
+    updateRelativeTimes();
+
+    setInterval(updateRelativeTimes, 60000);
+</script>

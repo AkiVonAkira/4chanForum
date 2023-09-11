@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;;
+  margin-bottom: 60px;
 }
 
 .nav-link {
@@ -25,68 +25,101 @@ body {
 }
 
 
-.form-group {
-    padding-bottom: 1rem;
-}
-
-.topic-container {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-}
-
-.topic {
-    padding: 1em;
-}
-
-.forumTopic-Container {
+.common-container {
     display: flex;
     flex-direction: column;
     list-style: none;
 }
 
-.forumTopic-Header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.common-section {
     padding: 1em;
-    border-bottom: 2px solid black;
-    margin: 0.5rem;
-}
-
-.forumTopic {
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-    text-decoration: none;
     border: 1px solid black;
     border-radius: 0.5em;
     margin: 0.5rem;
     text-decoration: none;
-    color: black;
+    color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    box-shadow: 0 10px 20px -15px black;
+    box-shadow: 0 8px 16px -12px black;
+    background: #434343;
+}
+.common-section:hover {
+    background: #1e3f56;
 }
 
-.forumTopic:hover {
-    background: #434343;
+.common-section span {
+    background: #2a2a2a;
     color: white;
 }
-
-.pinIcon{
-    height: 2em;
-    aspect-ratio:1/1;
-    justify-content:flex-end;
+.common-section a {
+    color: #51b7e8;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.common-section h2 {
+    color: #51b7e8;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.common-section p {
+    font-size: 1rem;
+    white-space:pre-line;
 }
 
-.forumTopic-Section{
+
+.section-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em 0em;
+    border-bottom: 4px solid black;
+    margin: 0.5rem;
+}
+.section-header a {
+    color: black;
+    text-decoration: none;
+}
+.section-header a:hover {
+    color: #03cacd;
+    text-decoration: none;
+}
+.section-header span {
+    color: #51b7e8;
+}
+
+.btn {
     display:flex;
     flex-direction:row;
-    justify-content:space-between;
+    gap:1em;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    box-shadow: 0 5px 10px -8px black;
 }
 
-.thread-container {
+.form-container form {
+    display: flex;
     padding: 1em;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.form-group label {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.form-group input {
+    border: 1px solid black;
+    border-radius: 0.5em;
+}
+.form-group textarea {
+    border: 1px solid black;
+    border-radius: 0.5em;
+    white-space: pre-wrap;
+    overflow: auto;
+    height:auto;
+    resize: none;
+    padding: 1em;
+    scrollbar-width: thin;
 }

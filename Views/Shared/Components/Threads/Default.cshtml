@@ -1,0 +1,43 @@
+﻿@model List<ThreadModel>
+
+@if (Model != null && Model.Any())
+{
+    <div class="common-container">
+        @foreach (var thread in Model)
+        {
+            <div class="common-section">
+                <h2>
+                    <a href="@Url.Action("Index", "Thread", new {threadId = thread.Id})">@thread.Title</a>
+                </h2>
+                @if (thread.isPinned)
+                {
+                    <i class="fa-solid fa-thumbtack"></i>
+                }
+                <span class="relative-time" data-date="@thread.Date"></span>
+                <p class="white-space:pre-wrap">@thread.Text</p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="common-section">
+        <p>No threads are available for this topic.</p>
+    </div>
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+    function updateRelativeTimes() {
+        var relativeTimeElements = document.querySelectorAll('.relative-time');
+        relativeTimeElements.forEach(function (element) {
+            var dateToDisplay = element.getAttribute('data-date');
+            var relativeTime = moment(dateToDisplay).fromNow();
+            element.textContent = relativeTime;
+        });
+    }
+
+    updateRelativeTimes();
+
+    setInterval(updateRelativeTimes, 60000);
+</script>

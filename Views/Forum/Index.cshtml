@@ -1,37 +1,20 @@
 ﻿@model List<ThreadModel>
 
-<div class="forumTopic-Container">
-    <div class="forumTopic-Header">
-        <h1>@ViewData["TopicTitle"]</h1>
-        <a class="btn" href="@Url.Action("CreateThread", "Thread", new { topicId = ViewBag.TopicId })">
-            <i class="fa-regular fa-plus"></i>
-        </a>
+<div class="common-container">
+    <div class="common-container" style="display: block;">
+        @await Component.InvokeAsync("ThreadForm", new { topicId = ViewBag.TopicId })
     </div>
-
-    @if (Model != null && Model.Any())
-    {
-        <div class="forumTopic-Container">
-            @foreach (var thread in Model)
-            {
-                <div class="forumTopic">
-                    <div class="forumTopic-Section">
-                        <h3>@thread.Title</h3>
-                        @if (thread.isPinned)
-                        {
-                            <i class="fa-solid fa-thumbtack"></i>
-                        }
-                    </div>
-                    <p class="">@thread.Text</p>
-                </div>
-                <a class="btn" href="@Url.Action("Reply", "Thread", new { threadId = thread.Id })">
-                    Reply
-                    <i class="fa-solid fa-reply"></i>
-                </a>
-            }
-        </div>
-    }
-    else
-    {
-        <p>No threads are available for this topic.</p>
-    }
+    <div id="threadsSection">
+        @await Component.InvokeAsync("Threads", new { topicId = ViewBag.TopicId })
+    </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".toggle-thread-form").click(function () {
+            var threadFormId = $(this).data("thread-form");
+            $("#" + threadFormId).toggle();
+        });
+    });
+</script>

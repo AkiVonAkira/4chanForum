@@ -1,0 +1,40 @@
+﻿@model List<ReplyModel>
+
+@if (Model != null && Model.Any())
+{
+    <div class="common-container">
+        @foreach (var reply in Model)
+        {
+            <div class="common-section">
+                @if (reply.isPinned)
+                {
+                    <i class="fa-solid fa-thumbtack"></i>
+                }
+                <span class="relative-time" data-date="@reply.Date"></span>
+                <p style="white-space:pre-wrap">@reply.Text</p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="common-section">
+        <p>No replies available for this thread.</p>
+    </div>
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+    function updateRelativeTimes() {
+        var relativeTimeElements = document.querySelectorAll('.relative-time');
+        relativeTimeElements.forEach(function (element) {
+            var dateToDisplay = element.getAttribute('data-date');
+            var relativeTime = moment(dateToDisplay).fromNow();
+            element.textContent = relativeTime;
+        });
+    }
+
+    updateRelativeTimes();
+
+    setInterval(updateRelativeTimes, 60000); 
+</script>
