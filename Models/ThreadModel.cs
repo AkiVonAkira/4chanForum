@@ -7,12 +7,14 @@ namespace _4chanForum.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please enter a title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [Required(ErrorMessage = "Please enter a message")]
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         public int TopicId { get; set; }
         public bool isPinned { get; set; } = false;
+        // Visas en lista av svar
+        public List<ReplyModel>? Replies { get; set; }
     }
 }
