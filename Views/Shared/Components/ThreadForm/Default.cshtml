@@ -1,0 +1,49 @@
+﻿@model ThreadModel
+
+<div class="common-container">
+    <div class="section-header">
+        <h1>@ViewData["TopicTitle"]</h1>
+        <a class="btn toggle-thread-form" data-thread-form="thread-form-@ViewBag.TopicId">
+            New Thread
+            <i class="fa-regular fa-plus"></i>
+        </a>
+    </div>
+
+    <div class="thread-form" style="display: none;" id="thread-form-@ViewBag.TopicId">
+        <div class="form-container">
+            <form asp-action="CreateThread" method="post">
+            <div class="form-group">
+                <label asp-for="Title">Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Text">Message</label>
+                <textarea asp-for="Text" class="form-control auto-resize"></textarea>
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="TopicId" value="@ViewBag.TopicId" />
+            <button type="submit" class="btn btn-primary"><i class="fa-regular fa-share-from-square"></i>Submit Thread</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Initialize auto-resizing for all textareas with the 'auto-resize' class
+        $('.auto-resize').on('input', function () {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight + this.offsetHeight - this.clientHeight) + 'px';
+        });
+
+        // Update textarea heights on window resize
+        $(window).on('resize', function () {
+            $('.auto-resize').each(function () {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight + this.offsetHeight - this.clientHeight) + 'px';
+            });
+        });
+    });
+</script>

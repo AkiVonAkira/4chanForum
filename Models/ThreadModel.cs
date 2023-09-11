@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _4chanForum.Models
 {
@@ -14,7 +15,6 @@ namespace _4chanForum.Models
 
         public int TopicId { get; set; }
         public bool isPinned { get; set; } = false;
-        // Visas en lista av svar
-        public List<ReplyModel>? Replies { get; set; }
+        public DateTime? Date { get; set; }
     }
 }

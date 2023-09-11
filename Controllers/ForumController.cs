@@ -23,5 +23,37 @@ namespace _4chanForum.Controllers
             if (threads.Any()) { return View(threads); }
             else { return View(new List<ThreadModel>()); }
         }
+
+        public IActionResult CreateThread(int topicId)
+        {
+            var thread = _context.Threads.FirstOrDefault(t => t.TopicId == topicId);
+
+            if (thread != null)
+            {
+                ViewData["TopicId"] = topicId;
+                ViewData["ThreadId"] = thread.Id;
+                ViewData["ThreadTitle"] = thread.Title;
+
+                return View();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateThread(ThreadModel thread)
+        {
+            if (ModelState.IsValid)
+            {
+                thread.Date = DateTime.Now;
+                _context.Threads.Add(thread);
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Forum", new { topicId = thread.TopicId });
+            }
+            return View("ThreadForm", thread);
+        }
     }
 }

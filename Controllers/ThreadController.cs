@@ -1,5 +1,6 @@
 ﻿using _4chanForum.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading;
 
 namespace _4chanForum.Controllers
 {
@@ -22,6 +23,7 @@ namespace _4chanForum.Controllers
                 var topic = _context.Topics.FirstOrDefault(t => t.Id == topicId);
 
                 ViewData["ThreadId"] = threadId;
+                ViewData["ThreadTitle"] = thread.Title;
                 ViewData["TopicId"] = thread.TopicId;
                 ViewData["TopicTitle"] = topic?.Title;
 
@@ -30,44 +32,35 @@ namespace _4chanForum.Controllers
             else { return View(new List<ThreadModel>()); }
         }
 
-        public IActionResult CreateThread(int topicId)
-        {
-            ViewData["TopicId"] = topicId;
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult CreateThread(ThreadModel thread)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Threads.Add(thread);
-                _context.SaveChanges();
-                return RedirectToAction("Index", "Forum", new { topicId = thread.TopicId });
-            }
-            return View(thread);
-        }
-
         public IActionResult Reply(int threadId)
         {
-            ViewData["threadId"] = threadId;
-            return View();
+            var thread = _context.Threads.FirstOrDefault(t => t.Id == threadId);
+
+            if (thread != null)
+            {
+                ViewData["ThreadId"] = threadId;
+                ViewData["ThreadTitle"] = thread.Title;
+
+                return View();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Reply(ReplyModel reply)
+        public IActionResult PostReply(ReplyModel reply)
         {
             if (ModelState.IsValid)
             {
+                reply.Date = DateTime.Now;
                 _context.Replies.Add(reply);
                 _context.SaveChanges();
-                return RedirectToAction("ViewThread", new { threadId = reply.ThreadId });
+                return RedirectToAction("Index", "Thread", new { threadId = reply.ThreadId });
             }
-            return View(reply);
-        }
-        
+            return View("Reply", reply);
+        }        
     }
 }
