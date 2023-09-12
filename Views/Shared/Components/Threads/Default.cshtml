@@ -13,8 +13,13 @@
                 {
                     <i class="fa-solid fa-thumbtack"></i>
                 }
-                <span class="relative-time" data-date="@thread.Date"></span>
-                <p class="white-space:pre-wrap">@thread.Text</p>
+
+                <span class="relative-time-text">
+                    <i class="fa-regular fa-calendar"></i><span class="relative-time" data-date="@thread.Date"></span>
+                </span>
+
+                @*<p class="white-space:pre-wrap">@thread.Text</p>*@
+                <span><i class="fa-regular fa-eye"></i> @thread.ViewCount</span>
             </div>
         }
     </div>

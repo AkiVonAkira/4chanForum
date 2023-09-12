@@ -33,15 +33,15 @@ namespace _4chanForum.Migrations
                     b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("QuotedReplyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ThreadId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isPinned")
                         .HasColumnType("bit");
@@ -73,6 +73,9 @@ namespace _4chanForum.Migrations
                     b.Property<int>("TopicId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ViewCount")
+                        .HasColumnType("int");
+
                     b.Property<bool>("isPinned")
                         .HasColumnType("bit");
 
@@ -94,9 +97,6 @@ namespace _4chanForum.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isPinned")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

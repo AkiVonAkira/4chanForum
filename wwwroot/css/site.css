@@ -136,3 +136,14 @@ body {
     padding: 1em;
     scrollbar-width: thin;
 }
+
+
+.relative-time {
+    display: inline-block;
+    margin-right: 5px; /* Adjust margin as needed */
+}
+
+.fa-calendar {
+    display: inline-block;
+    margin-right: 5px; /* Adjust margin as needed */
+}
