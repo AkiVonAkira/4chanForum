@@ -67,15 +67,28 @@ body {
     white-space:pre-line;
 }
 
-
 .section-header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding: 1em 0em;
     border-bottom: 4px solid black;
     margin: 0.5rem;
 }
+
+.title-description {
+    display: flex;
+    flex-direction: row;
+    margin-right: 1rem;
+    gap: 1em;
+    align-items: end;   
+}
+
+.section-header h1,
+.section-header h3 {
+    margin: 0;
+}
+
 .section-header a {
     color: black;
     text-decoration: none;
