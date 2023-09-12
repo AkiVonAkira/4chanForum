@@ -3,7 +3,7 @@
 @if (Model != null && Model.Any())
 {
     <div class="common-container">
-        @foreach (var thread in Model)
+        @foreach (var thread in Model.OrderBy(t => !t.isPinned))
         {
             <div class="common-section">
                 <h2>
