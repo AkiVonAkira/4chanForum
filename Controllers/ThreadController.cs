@@ -1,6 +1,5 @@
 ﻿using _4chanForum.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
 
 namespace _4chanForum.Controllers
 {
@@ -27,9 +26,14 @@ namespace _4chanForum.Controllers
                 ViewData["TopicId"] = thread.TopicId;
                 ViewData["TopicTitle"] = topic?.Title;
 
+                IncrementViewCount(threadId);
+
                 return View(new List<ThreadModel> { thread });
             }
-            else { return View(new List<ThreadModel>()); }
+            else
+            {
+                return View(new List<ThreadModel>());
+            }
         }
 
         public IActionResult Reply(int threadId)
@@ -61,6 +65,16 @@ namespace _4chanForum.Controllers
                 return RedirectToAction("Index", "Thread", new { threadId = reply.ThreadId });
             }
             return View("Reply", reply);
-        }        
+        }
+
+        private void IncrementViewCount(int threadId)
+        {
+            var thread = _context.Threads.FirstOrDefault(t => t.Id == threadId);
+            if (thread != null)
+            {
+                thread.ViewCount++;
+                _context.SaveChanges();
+            }
+        }
     }
 }

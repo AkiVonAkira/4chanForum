@@ -15,6 +15,8 @@ namespace _4chanForum
             builder.Services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DataContext")));
 
+            builder.Services.AddHttpContextAccessor();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

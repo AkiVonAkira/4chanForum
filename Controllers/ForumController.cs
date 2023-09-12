@@ -1,6 +1,5 @@
 ﻿using _4chanForum.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
 
 namespace _4chanForum.Controllers
 {
@@ -19,6 +18,7 @@ namespace _4chanForum.Controllers
 
             ViewData["TopicId"] = topicId;
             ViewData["TopicTitle"] = (topic != null) ? topic.Title : "Topic not found";
+            ViewData["TopicDescription"] = (topic != null) ? topic.Description : "Description not found";
 
             if (threads.Any()) { return View(threads); }
             else { return View(new List<ThreadModel>()); }

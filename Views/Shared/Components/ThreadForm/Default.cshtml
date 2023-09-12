@@ -2,7 +2,10 @@
 
 <div class="common-container">
     <div class="section-header">
-        <h1>@ViewData["TopicTitle"]</h1>
+        <div class="title-description">
+            <h1>@ViewData["TopicTitle"]</h1>
+            <h3>@ViewData["TopicDescription"]</h3>
+        </div>
         <a class="btn toggle-thread-form" data-thread-form="thread-form-@ViewBag.TopicId">
             New Thread
             <i class="fa-regular fa-plus"></i>

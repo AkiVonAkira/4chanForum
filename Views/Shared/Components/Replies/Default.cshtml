@@ -3,7 +3,7 @@
 @if (Model != null && Model.Any())
 {
     <div class="common-container">
-        @foreach (var reply in Model)
+        @foreach (var reply in Model.OrderBy(r => !r.isPinned))
         {
             <div class="common-section">
                 @if (reply.isPinned)
