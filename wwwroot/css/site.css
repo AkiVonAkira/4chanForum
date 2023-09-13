@@ -2,11 +2,7 @@ html {
   font-size: 14px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
+    
 
 html {
   position: relative;
@@ -51,6 +47,7 @@ body {
 .common-section span {
     background: #2a2a2a;
     color: white;
+    margin-left: 72em
 }
 .common-section a {
     color: #51b7e8;
@@ -146,4 +143,11 @@ body {
 .fa-calendar {
     display: inline-block;
     margin-right: 5px; /* Adjust margin as needed */
+}
+
+
+@media screen and (max-width: 750px) {
+    .common-section span {
+        margin-left: 18em
+    }
 }
