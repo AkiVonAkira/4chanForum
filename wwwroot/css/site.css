@@ -2,15 +2,17 @@ html {
   font-size: 14px;
 }
 
-    
-
-html {
-  position: relative;
-  min-height: 100%;
+html, body {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-body {
-  margin-bottom: 60px;
+.container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .nav-link {
@@ -19,7 +21,6 @@ body {
     margin: 0.75em;
     padding: 0.5rem 1rem;
 }
-
 
 .common-container {
     display: flex;
@@ -45,9 +46,15 @@ body {
 }
 
 .common-section span {
-    background: #2a2a2a;
+    display:flex;
+    justify-content: flex-end;
     color: white;
-    margin-left: 72em
+    text-align: end;
+    align-items: center;
+}
+.common-section i {
+    text-align: center;
+    margin:0 0.5em;
 }
 .common-section a {
     color: #51b7e8;
@@ -132,22 +139,4 @@ body {
     resize: none;
     padding: 1em;
     scrollbar-width: thin;
-}
-
-
-.relative-time {
-    display: inline-block;
-    margin-right: 5px; /* Adjust margin as needed */
-}
-
-.fa-calendar {
-    display: inline-block;
-    margin-right: 5px; /* Adjust margin as needed */
-}
-
-
-@media screen and (max-width: 750px) {
-    .common-section span {
-        margin-left: 18em
-    }
 }
