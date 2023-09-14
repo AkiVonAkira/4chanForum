@@ -127,6 +127,10 @@ header, footer {
     color: var(--white);
 }
 
+a {
+    color: var(--blue);
+}
+
 a:hover {
     color: var(--gold);
 }
