@@ -277,3 +277,8 @@ a:hover {
     padding: 1em;
     scrollbar-width: thin;
 }
+
+.text-danger {
+    font-weight: bold;
+    padding-left: 1em;
+}

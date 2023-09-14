@@ -40,9 +40,25 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function () {
+        function setToggleState() {
+            var replyFormId = "reply-form-@ViewBag.ThreadId";
+            var toggleState = localStorage.getItem(replyFormId + "-toggle");
+
+            if (toggleState === "true") {
+                $("#" + replyFormId).show();
+            } else {
+                $("#" + replyFormId).hide();
+            }
+        }
+
+        setToggleState();
+
         $(".toggle-reply-form").click(function () {
             var replyFormId = $(this).data("reply-form");
             $("#" + replyFormId).toggle();
+
+            var toggleState = $("#" + replyFormId).is(":visible");
+            localStorage.setItem(replyFormId + "-toggle", toggleState.toString());
         });
     });
 </script>

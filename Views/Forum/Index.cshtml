@@ -10,9 +10,25 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function () {
+        function setToggleState() {
+            var threadFormId = "thread-form-@ViewBag.TopicId";
+            var toggleState = localStorage.getItem(threadFormId + "-toggle");
+
+            if (toggleState === "true") {
+                $("#" + threadFormId).show();
+            } else {
+                $("#" + threadFormId).hide();
+            }
+        }
+
+        setToggleState();
+
         $(".toggle-thread-form").click(function () {
             var threadFormId = $(this).data("thread-form");
             $("#" + threadFormId).toggle();
+
+            var toggleState = $("#" + threadFormId).is(":visible");
+            localStorage.setItem(threadFormId + "-toggle", toggleState.toString());
         });
     });
 </script>

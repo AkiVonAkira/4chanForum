@@ -11,11 +11,11 @@
 
     <div class="reply-form" style="display: none;" id="reply-form-@ViewBag.ThreadId">
         <div class="form-container">
-            <form asp-action="PostReply" method="post">
+            <form asp-action="Index" method="post">
             <div class="form-group">
                 <label asp-for="Text"></label>
-                <textarea asp-for="Text" class="form-control auto-resize"></textarea>
                 <span asp-validation-for="Text" class="text-danger"></span>
+                <textarea asp-for="Text" class="form-control auto-resize"></textarea>
             </div>
             <input type="hidden" asp-for="ThreadId" value="@ViewBag.ThreadId" />
             <button type="submit" class="btn"><i class="fa-regular fa-share-from-square"></i>Submit Reply</button>

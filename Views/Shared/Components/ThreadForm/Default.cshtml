@@ -14,16 +14,16 @@
 
     <div class="thread-form" style="display: none;" id="thread-form-@ViewBag.TopicId">
         <div class="form-container">
-            <form asp-action="CreateThread" method="post">
+            <form asp-action="Index" method="post">
             <div class="form-group">
                 <label asp-for="Title">Title</label>
-                <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
+                <input asp-for="Title" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Text">Message</label>
-                <textarea asp-for="Text" class="form-control auto-resize"></textarea>
                 <span asp-validation-for="Text" class="text-danger"></span>
+                <textarea asp-for="Text" class="form-control auto-resize"></textarea>
             </div>
             <input type="hidden" asp-for="TopicId" value="@ViewBag.TopicId" />
             <button type="submit" class="btn"><i class="fa-regular fa-share-from-square"></i>Submit Thread</button>
