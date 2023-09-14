@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\images\icons\thumbtacks.png" />
+    <None Include="wwwroot\js\relative-time.js" />
   </ItemGroup>
 
 </Project>

@@ -7,14 +7,13 @@
         {
             <div class="common-section">
                 <div class="icons">
-                    @if (reply.isPinned)
-                    {
-                        <i class="fa-solid fa-thumbtack"></i>
-                    }
-
-                    <div class="relative-time-text">
-                        <span class="relative-time" data-date="@reply.Date"></span>
-                    </div>
+                    <span>
+                        @if (reply.isPinned)
+                        {
+                            <i class="fa-solid fa-thumbtack"></i>
+                        }
+                    </span>
+                    <span class="relative-time" data-date="@reply.Date"></span>
                 </div>
                 <p style="white-space:pre-wrap">@reply.Text</p>
             </div>
@@ -24,22 +23,6 @@
 else
 {
     <div class="common-section">
-        <p>No replies available for this thread.</p>
+        <p><i class="fa-solid fa-xmark"></i> No replies available for this thread.</p>
     </div>
 }
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-<script>
-    function updateRelativeTimes() {
-        var relativeTimeElements = document.querySelectorAll('.relative-time');
-        relativeTimeElements.forEach(function (element) {
-            var dateToDisplay = element.getAttribute('data-date');
-            var relativeTime = moment(dateToDisplay).fromNow();
-            element.innerHTML = `<i class="fa-regular fa-calendar"></i>${relativeTime}`;
-        });
-    }
-
-    updateRelativeTimes();
-
-    setInterval(updateRelativeTimes, 60000);
-</script>

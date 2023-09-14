@@ -2,9 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">4ChanForum</h1>
-    <ul class="list-unstyled padd">
+<div class="common-container">
+    <div class="text-center">
+        <h1 class="display-4">4chanForum Topics</h1>
+    </div>
+    <ul class="list-unstyled d-flex flex-row justify-content-center align-items-center flex-wrap">
         @await Component.InvokeAsync("Topics")
-    </ul>    
+    </ul>
+</div>
+
+<div class="common-container">
+    <div class="section-header">
+        <div class="title-description">
+            <h1><i class="fa-solid fa-fire"></i> Hot Threads</h1>
+        </div>
+    </div>
+    <div class="common-container" style="display: block;">
+        @await Component.InvokeAsync("HotThreads")
+    </div>
 </div>

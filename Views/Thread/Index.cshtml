@@ -14,15 +14,14 @@
 
         <div class="common-section">
             <div class="icons">
-                @if (thread.isPinned)
-                {
-                    <i class="fa-solid fa-thumbtack"></i>
-                }
-
-                <div class="relative-time-text">
-                    <span class="relative-time" data-date="@thread.Date"></span>
-                    <span><i class="fa-regular fa-eye"></i>@thread.ViewCount</span>
-                </div>
+                <span>
+                    @if (thread.isPinned)
+                    {
+                        <i class="fa-solid fa-thumbtack"></i>
+                    }
+                </span>
+                <span class="relative-time" data-date="@thread.Date"></span>
+                <span><i class="fa-regular fa-eye"></i>@thread.ViewCount</span>
             </div>
             <h2>@thread.Title</h2>
             <p style="white-space:pre-wrap">@thread.Text</p>
@@ -46,20 +45,4 @@
             $("#" + replyFormId).toggle();
         });
     });
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-<script>
-    function updateRelativeTimes() {
-        var relativeTimeElements = document.querySelectorAll('.relative-time');
-        relativeTimeElements.forEach(function (element) {
-            var dateToDisplay = element.getAttribute('data-date');
-            var relativeTime = moment(dateToDisplay).fromNow();
-            element.innerHTML = `<i class="fa-regular fa-calendar"></i>${relativeTime}`;
-        });
-    }
-
-    updateRelativeTimes();
-
-    setInterval(updateRelativeTimes, 60000);
 </script>

@@ -4,7 +4,7 @@
 {
     @foreach (var topic in Model)
     {
-        <li class="nav-item">
+        <li class="nav-item flex-grow-1">
             <a class="nav-link" href="@Url.Action("Index", "Forum", new {topicId = topic.Id})">
                 <i class="fa-regular fa-folder"></i>  @topic.Title
             </a>
@@ -13,5 +13,5 @@
 }
 else
 {
-    <p>No topics available.</p>
+    <p><i class="fa-solid fa-xmark"></i> No topics available.</p>
 }
