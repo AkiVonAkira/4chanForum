@@ -46,6 +46,7 @@ header, footer {
 .footer {
     color: var(--white);
     border-top: 4px solid var(--gold);
+    padding: 1em;
 }
 
 .navbar {
