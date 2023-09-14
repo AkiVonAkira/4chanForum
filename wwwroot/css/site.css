@@ -7,6 +7,11 @@
     --blue: #4381C1;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     font-size: 14px;
 }
@@ -16,6 +21,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    color: var(--white);
     background-color: var(--onyx);
     background-image: var(--bg-image);
 }
@@ -26,24 +32,52 @@ html, body {
     flex-direction: column;
 }
 
-header {
-    background: var(--onyx);
+header, footer {
+    color: var(--white);
+    background-color: var(--onyx);
+    background-image: var(--bg-image);
 }
-
+.footer {
+    border-top: 4px solid var(--gold);
+}
 .navbar {
     justify-content: space-between;
+    color: var(--white);
+    justify-content: center;
+    border-bottom: 4px solid var(--gold);
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--white);
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: var(--white);
+}
+
+.navbar-dark .navbar-toggler {
+    color: var(--gold);
+    border: 2px solid var(--emerald);
+    background: var(--emerald);
+}
+.navbar-toggler:focus {
+    border: 2px solid var(--gold);
+    box-shadow: none;
+}
+.navbar-toggler {
+    box-shadow: none;
 }
 
 .nav-link {
-    border: 1px solid black;
-    border-radius: 0.5em;
+    border: 2px solid var(--onyx);
+    border-radius: 0.25em;
     margin: 0.75em;
     padding: 0.5rem 1rem;
     color: var(--white);
     background: var(--emerald);
 }
 .nav-link:hover{
-    color: var(--onyx);
+    background: var(--gold);
+    color: var(--white);
+    box-shadow: 0 8px 16px -12px black;
 }
 
 .nav-item {
@@ -61,46 +95,72 @@ header {
 }
 
 .common-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     padding: 1em;
     margin: 0.5rem;
-    border: 1px solid black;
-    border-radius: 0.5em;
+    gap: 0.5em;
+    border: 2px solid var(--emerald);
+    border-radius: 0.25em;
     white-space: nowrap;
     overflow: hidden;
     text-decoration: none;
     text-overflow: ellipsis;
     box-shadow: 0 8px 16px -12px black;
     color: var(--white);
-    background: var(--emerald);
 }
 
-.common-section:hover {
-    background: var(--gold);
+a:hover {
+    color: var(--gold);
 }
 
 .common-section span {
-    display: flex;
-    justify-content: flex-end;
     text-align: end;
     align-items: center;
     color: var(--white);
+    text-transform: capitalize;
 }
 
 .common-section i {
     text-align: center;
-    margin: 0 0.5em;
+    margin: 0 0.25em;
 }
 
-.common-section a,
 .common-section h2 {
-    color: var(--white);
     text-decoration: none;
-    text-transform: uppercase;
+    flex-grow: 2;
+    overflow:hidden;
 }
 
 .common-section p {
     font-size: 1rem;
     white-space: pre-line;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0.5em;
+    text-decoration: none;
+}
+
+.icons {
+    display: flex;
+    flex-shrink: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0.25em;
+    border-radius: 0.25em;
+    background: var(--blue);
+    height: fit-content;
+    width: fit-content;
+}
+
+.paragraph-container {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.5em;
+    color:var(--white);
 }
 
 .title-description {
@@ -109,20 +169,23 @@ header {
     margin-right: 1rem;
     gap: 1em;
     align-items: end;
+    flex-wrap:wrap;
 }
 
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap:wrap;
+    gap: 1em;
     padding: 1em 0em;
-    border-bottom: 4px solid black;
     margin: 0.5rem;
     color: var(--white);
+    border-bottom: 4px solid var(--gold);
 }
 
 .section-header h1,
-.section-header h3 {
+.section-header h2 {
     margin: 0;
 }
 
@@ -145,13 +208,13 @@ header {
     flex-direction: row;
     gap: 0.5em;
     align-items: center;
-    border: 1px solid black;
-    border-radius: 0.5em;
-    box-shadow: 0 5px 10px -8px black;
+    border: 2px solid var(--onyx);
+    border-radius: 0.25em;
     color: var(--white);
     background: var(--blue);
 }
 .btn:hover {
+    box-shadow: 0 5px 10px -8px var(--gold);
     border-color: var(--blue);
     color: var(--gold);
 }
@@ -171,8 +234,8 @@ header {
 
 .form-group input,
 .form-group textarea {
-    border: 1px solid black;
-    border-radius: 0.5em;
+    border: 2px solid var(--onyx);
+    border-radius: 0.25em;
 }
 
 .form-group textarea {
