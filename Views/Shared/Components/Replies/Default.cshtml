@@ -6,15 +6,16 @@
         @foreach (var reply in Model.OrderBy(r => !r.isPinned))
         {
             <div class="common-section">
-                @if (reply.isPinned)
-                {
-                    <i class="fa-solid fa-thumbtack"></i>
-                }
+                <div class="icons">
+                    @if (reply.isPinned)
+                    {
+                        <i class="fa-solid fa-thumbtack"></i>
+                    }
 
-                <span class="relative-time-text">
-                    <i class="fa-regular fa-calendar"></i><span class="relative-time" data-date="@reply.Date"></span>
-                </span>
-
+                    <div class="relative-time-text">
+                        <span class="relative-time" data-date="@reply.Date"></span>
+                    </div>
+                </div>
                 <p style="white-space:pre-wrap">@reply.Text</p>
             </div>
         }
@@ -34,11 +35,11 @@ else
         relativeTimeElements.forEach(function (element) {
             var dateToDisplay = element.getAttribute('data-date');
             var relativeTime = moment(dateToDisplay).fromNow();
-            element.textContent = relativeTime;
+            element.innerHTML = `<i class="fa-regular fa-calendar"></i>${relativeTime}`;
         });
     }
 
     updateRelativeTimes();
 
-    setInterval(updateRelativeTimes, 60000); 
+    setInterval(updateRelativeTimes, 60000);
 </script>

@@ -4,11 +4,11 @@
     <div class="section-header">
         <div class="title-description">
             <h1>@ViewData["TopicTitle"]</h1>
-            <h3>@ViewData["TopicDescription"]</h3>
+            <h2>@ViewData["TopicDescription"]</h2>
         </div>
         <a class="btn toggle-thread-form" data-thread-form="thread-form-@ViewBag.TopicId">
-            New Thread
             <i class="fa-regular fa-plus"></i>
+            New Thread
         </a>
     </div>
 
@@ -26,7 +26,7 @@
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="TopicId" value="@ViewBag.TopicId" />
-            <button type="submit" class="btn btn-primary"><i class="fa-regular fa-share-from-square"></i>Submit Thread</button>
+            <button type="submit" class="btn"><i class="fa-regular fa-share-from-square"></i>Submit Thread</button>
             </form>
         </div>
     </div>
