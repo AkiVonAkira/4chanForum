@@ -4,8 +4,8 @@
     <div class="section-header">
         <h4>Replies</h4>
         <a class="btn toggle-reply-form" data-reply-form="reply-form-@ViewBag.ThreadId">
-            Reply
             <i class="fa-solid fa-reply"></i>
+            Reply
         </a>
     </div>
 
@@ -18,7 +18,7 @@
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="ThreadId" value="@ViewBag.ThreadId" />
-            <button type="submit" class="btn btn-primary"><i class="fa-regular fa-share-from-square"></i>Submit Reply</button>
+            <button type="submit" class="btn"><i class="fa-regular fa-share-from-square"></i>Submit Reply</button>
             </form>
         </div>
     </div>

@@ -5,7 +5,7 @@
     @foreach (var topic in Model)
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" href="@Url.Action("Index", "Forum", new {topicId = topic.Id})">
+            <a class="nav-link" href="@Url.Action("Index", "Forum", new {topicId = topic.Id})">
                 <i class="fa-regular fa-folder"></i>  @topic.Title
             </a>
         </li>
