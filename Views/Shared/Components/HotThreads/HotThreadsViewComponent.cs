@@ -32,9 +32,9 @@ public class HotThreadsViewComponent : ViewComponent
                         TrendingScore = trendingScore
                     };
                 })
-                .OrderByDescending(item => item.TrendingScore)
                 .Take(5)
             )
+            .OrderByDescending(item => item.TrendingScore)
             .ToList();
 
         var topicIds = hotThreadsByTopic.Select(thread => thread.Thread.TopicId).Distinct();
@@ -46,6 +46,7 @@ public class HotThreadsViewComponent : ViewComponent
         foreach (var thread in hotThreadsByTopic)
         {
             ViewData[$"ThreadTopic_{thread.Thread.TopicId}"] = topicTitles[thread.Thread.TopicId];
+            ViewData[$"ThreadScore_{thread.Thread.Id}"] = thread.TrendingScore.ToString("F1");
         }
 
         return View(hotThreadsByTopic.Select(thread => thread.Thread).ToList());

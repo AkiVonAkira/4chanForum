@@ -13,6 +13,7 @@
                             <i class="fa-solid fa-thumbtack"></i>
                         }
                     </span>
+                    <span><i class="fa-solid fa-fire"></i>@ViewData[$"ThreadScore_{thread.Id}"]</span>
                     <span><i class="fa-regular fa-folder"></i>@ViewData[$"ThreadTopic_{thread.TopicId}"]</span>
                     <span class="relative-time" data-date="@thread.Date"></span>
                     <span><i class="fa-regular fa-eye"></i>@thread.ViewCount</span>
