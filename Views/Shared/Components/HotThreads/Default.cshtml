@@ -7,15 +7,15 @@
         {
             <a class="common-section" href="@Url.Action("Index", "Thread", new {threadId = thread.Id})">
                 <div class="icons">
-                    <div class="relative-time-text">
+                    <span>
                         @if (thread.isPinned)
                         {
                             <i class="fa-solid fa-thumbtack"></i>
                         }
-                        <span><i class="fa-regular fa-folder"></i>@ViewData[$"ThreadTopic_{thread.TopicId}"]</span>
-                        <span class="relative-time" data-date="@thread.Date"></span>
-                        <span><i class="fa-regular fa-eye"></i>@thread.ViewCount</span>
-                    </div>
+                    </span>
+                    <span><i class="fa-regular fa-folder"></i>@ViewData[$"ThreadTopic_{thread.TopicId}"]</span>
+                    <span class="relative-time" data-date="@thread.Date"></span>
+                    <span><i class="fa-regular fa-eye"></i>@thread.ViewCount</span>
                 </div>
                 <h2>@thread.Title</h2>
                 <div class="paragraph-container">@thread.Text</div>

@@ -7,13 +7,13 @@
         {
             <div class="common-section">
                 <div class="icons">
-                    <div class="relative-time-text">
+                    <span>
                         @if (reply.isPinned)
                         {
                             <i class="fa-solid fa-thumbtack"></i>
                         }
-                        <span class="relative-time" data-date="@reply.Date"></span>
-                    </div>
+                    </span>
+                    <span class="relative-time" data-date="@reply.Date"></span>
                 </div>
                 <p style="white-space:pre-wrap">@reply.Text</p>
             </div>
