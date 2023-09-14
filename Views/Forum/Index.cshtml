@@ -3,8 +3,6 @@
 <div class="common-container">
     <div class="common-container" style="display: block;">
         @await Component.InvokeAsync("ThreadForm", new { topicId = ViewBag.TopicId })
-    </div>
-    <div id="threadsSection">
         @await Component.InvokeAsync("Threads", new { topicId = ViewBag.TopicId })
     </div>
 </div>
