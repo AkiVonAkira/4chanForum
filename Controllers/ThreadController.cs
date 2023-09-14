@@ -36,26 +36,9 @@ namespace _4chanForum.Controllers
             }
         }
 
-        public IActionResult Reply(int threadId)
-        {
-            var thread = _context.Threads.FirstOrDefault(t => t.Id == threadId);
-
-            if (thread != null)
-            {
-                ViewData["ThreadId"] = threadId;
-                ViewData["ThreadTitle"] = thread.Title;
-
-                return View();
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult PostReply(ReplyModel reply)
+        public IActionResult Index(ReplyModel reply)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +47,15 @@ namespace _4chanForum.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Thread", new { threadId = reply.ThreadId });
             }
-            return View("Reply", reply);
+
+            var thread = _context.Threads.FirstOrDefault(t => t.Id == reply.ThreadId);
+
+            ViewData["TopicId"] = thread.TopicId;
+            ViewData["ThreadId"] = reply.ThreadId;
+            ViewData["ThreadTitle"] = (thread != null) ? thread.Title : "Thread not found";
+
+            var threads = _context.Threads.Where(t => t.Id == thread.Id).ToList();
+            return View("Index", threads);
         }
 
         private void IncrementViewCount(int threadId)
